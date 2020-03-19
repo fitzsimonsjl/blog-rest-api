@@ -1,0 +1,6 @@
+<%= form_for(@triangle) do |f| %>
+<%= f.text_field :first_side, :placeholder => "Enter the value of the first side" %>
+<%= f.text_field :second_side, :placeholder => "Enter the value of the second side" %>
+<%= f.text_field :third_side, :placeholder => "Enter the value of the third side" %>
+<%= f.submit "Check triangle type", class: "btn-submit" %>
+<% end %>
