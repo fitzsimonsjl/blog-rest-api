@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'factory_bot'
 
 RSpec.describe Api::V1::PostsController do
 
@@ -34,15 +35,10 @@ end
     end
   end
 
-   RSpec.describe Api::V1::PostsController do
+RSpec.describe Api::V1::PostsController do
 
-    describe 'GET #create' do
-      before do
-        get :create
-      end
-    end
-
-    it 'creates a blog post' do
-      post = Post.build(title: "Post title for Rspec Testing", body: "Post body for RSpect Testing")
-      end
-  end
+  it 'successfully creates a test post' do
+  @test_post = build(:post)
+  expect (@test_post).to be_valid
+  end 
+end
