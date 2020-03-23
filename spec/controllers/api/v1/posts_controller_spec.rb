@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'factory_bot'
 
 RSpec.describe Api::V1::PostsController do
 
@@ -33,3 +34,11 @@ end
       have_attributes([:id, :title, :body])
     end
   end
+
+RSpec.describe Api::V1::PostsController do
+
+  it 'successfully creates a test post' do
+  @test_post = build(:post)
+  expect (@test_post).to be_valid
+  end 
+end

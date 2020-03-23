@@ -5,10 +5,6 @@ module Api
   			????
   		end 	
 
-  		def new
-  			@triangle = Triangle.new
-  		end
-
   		def create
   			@sides = {
   				:FirstSide => params[:triangle][:first_side],
