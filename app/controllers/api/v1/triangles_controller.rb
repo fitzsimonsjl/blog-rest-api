@@ -1,9 +1,8 @@
 module Api
   module V1
   	class TrianglesController < ApplicationController
-  		def index 
-  			????
-  		end 	
+  		def index
+  		end
 
   		def create
   			@sides = {
@@ -12,6 +11,12 @@ module Api
   				:ThirdSide => params[:triangle][:third_side]
   			}
   		end
+
+      private
+
+      def triangle_params
+        params.require(:triangle).permit(:first_side, :second_side, :third_side)
+      end
   	end
   end
 end
