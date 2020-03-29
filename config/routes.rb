@@ -3,7 +3,10 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :comments
       resources :posts
-      resources :triangles, only: [:index, :create]
+
+      resources :triangle, only: [:index, :create, :show]
+
+      get "triangle", to: "triangle#new"
     end
   end
 end
