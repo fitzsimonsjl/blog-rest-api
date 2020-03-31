@@ -9,11 +9,11 @@ RSpec.describe Api::V1::PostsController do
     end
   end
 
-    it 'returns http success on #index' do
+    it 'returns http success on #index and retrieves all posts' do
       expect(response).to have_http_status(:success)
     end
 
-    it 'JSON body response contains expected post attributes for #index' do
+    it 'JSON body response contains expected post attributes for posts #index' do
       have_attributes([:id, :title, :body])
     end
 end
@@ -26,7 +26,7 @@ end
       end
     end
 
-    it 'returns http success on #show' do
+    it 'returns http success on posts #show' do
       expect(response).to have_http_status(:success)
     end
 
@@ -38,7 +38,7 @@ end
 RSpec.describe Api::V1::PostsController do
 
   it 'successfully creates a test post' do
-  @test_post = build(:post)
-  expect (@test_post).to be_valid
-  end 
+  test_post = create(:post)
+  expect (test_post).to be_valid
+  end
 end
