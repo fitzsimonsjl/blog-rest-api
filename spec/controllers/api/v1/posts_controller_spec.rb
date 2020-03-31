@@ -38,7 +38,7 @@ end
 RSpec.describe Api::V1::PostsController do
 
   it 'successfully creates a test post' do
-  test_post = create(:post)
-  expect (test_post).to be_valid
+  @test_post = create(:post)
+  expect (:post).to have_http_status(:created)
   end
 end
