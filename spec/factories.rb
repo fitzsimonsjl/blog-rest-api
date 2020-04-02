@@ -1,7 +1,7 @@
 FactoryBot.define do
-    factory :post do
-      title { "Test title for post" }
-      body { "Test body as some content for post" }
+    factory :test_post, class: Post do
+      title { Faker::Coffee.blend_name }
+      body { Faker::Coffee.notes }
     end
 
     factory :comment do
@@ -15,4 +15,5 @@ FactoryBot.define do
         body: "New test comment body"
       }
     end
-end
+  end
+
