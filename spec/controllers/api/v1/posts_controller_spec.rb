@@ -27,7 +27,7 @@ end
     end
 
     it 'returns http success on posts #show' do
-      expect(response).to have_http_status(:success)
+      expect(response.status).to eql 200
     end
 
     it 'JSON body response contains individual post attributes for #show' do
@@ -37,8 +37,14 @@ end
 
 RSpec.describe Api::V1::PostsController do
 
-  it 'successfully creates a test post' do
-  test_post = create(:post)
-  expect (test_post).to be_valid
+  describe 'POST #create'
+  before do
+    get :create
+  end
+
+  it 'successfully creates a post' do
+  test_post = build(:post)
+  expect(test_post).to be_valid
   end
 end
+

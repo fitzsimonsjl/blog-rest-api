@@ -23,13 +23,28 @@ RSpec.describe Api::V1::CommentsController do
     before do
       get :show
     end
+  end
 
     it 'returns http success on comments #show' do
-      expect(response).to have_http_status(:success)
+      expect(response.status).to eql 200
     end
 
     it 'JSON body response contains individual comment attributes for #show' do
       have_attributes([:post_id, :name, :body])
     end
   end
+
+  RSpec.describe Api::V1::CommentsController do
+
+    describe 'POST #create' do
+      before do
+        get :create
+  end
 end
+
+it 'successfully creates a comment' do
+  test_comment = build(:comment)
+  expect(test_comment).to be_valid
+  end
+end
+
