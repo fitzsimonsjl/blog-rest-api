@@ -48,3 +48,14 @@ RSpec.describe Api::V1::PostsController do
       expect(test_post).to be_valid
   end
 end
+
+RSpec.describe Api::V1::PostsController do
+
+  describe 'DELETE #destroy' do
+  before do
+    get :delete 
+  end 
+end 
+
+it 'successfully deletes a post' do
+  
