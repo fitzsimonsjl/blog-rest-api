@@ -1,39 +1,50 @@
 require 'rails_helper'
+require 'factory_bot'
 
-describe "get all posts route", :type => :request do
-  let!(:posts) {FactoryBot.create_list(:test_post, 10)}
+RSpec.describe Api::V1::PostsController do
 
-before {get '/api/v1/posts'}
-
-it 'returns all posts' do
-    expect(JSON.parse(response.body).size).to eq(15)
+  describe 'GET #index' do
+    before do
+      get :index
+    end
   end
 
-it 'returns status code 200' do
-    expect(response).to have_http_status(:success)
-  end
+    it 'returns http success on #index and retrieves all posts' do
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'JSON body response contains expected post attributes for posts #index' do
+      have_attributes([:id, :title, :body])
+    end
 end
 
-describe "Post POST route", :type => :request do
+  RSpec.describe Api::V1::PostsController do
 
-before do
+    describe 'GET #show' do
+      before do
+        get :show
+      end
+    end
 
-    post '/api/v1/posts', params: { :post => 'test_post', :title => 'test_title', :body => 'test_body' }
+    it 'returns http success on posts #show' do
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'JSON body response contains individual post attributes for #show' do
+      have_attributes([:id, :title, :body])
+    end
   end
 
-it 'returns the post itself' do
-    expect(JSON.parse(response.body)['post']).to eq('test_post')
-  end
+RSpec.describe Api::V1::PostsController do
 
-it 'returns the post title' do
-    expect(JSON.parse(response.body)['title']).to eq('test_title')
-  end
+  describe 'POST #create' do
+    before do
+      get :create
+    end 
+  end 
 
-it 'returns the post body' do
-    expect(JSON.parse(response.body)['body']).to eq('test_body')
-  end
-
-it 'returns a created status' do
-    expect(response).to have_http_status(:created)
+  it 'successfully creates a post' do
+    test_post = build(:post)
+      expect(test_post).to be_valid
   end
 end
