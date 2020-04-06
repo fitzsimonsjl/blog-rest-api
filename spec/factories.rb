@@ -1,7 +1,7 @@
 FactoryBot.define do
-    factory :test_post, class: Post do
-      title { Faker::Coffee.blend_name }
-      body { Faker::Coffee.notes }
+    factory :post do
+      title { "Test Post Title" }
+      body { "Test Post Body" }
     end
 
     factory :comment do
