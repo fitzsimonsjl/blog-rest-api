@@ -1,16 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-subject { Post.new(title: "Test post for testing purposes", body: "Test body for test purposes") }
+  # We want to test:
+  # Validations such as if a field is pouplated (post title and body)
+  # Associations to make sure our relationships are correct (post has comments)
 
-before { subject.save }
+  describe "validations" do
+    # it "should validate the presence of commenter name" do
+    # commenter = Comment.new(name: 'Sven Svendson')
+    # expect(commenter.valid?).to be false
+    # end
 
-it 'title should be present' do
-expect(subject).to be_valid
-end
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:body) }
+  end
 
-it 'body should be present' do
-  expect(subject).to be_valid
-end
-
+  describe "associations" do
+    it { should have_many :comments }
+  end
 end
