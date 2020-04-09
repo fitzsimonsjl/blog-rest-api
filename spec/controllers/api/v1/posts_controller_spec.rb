@@ -40,12 +40,13 @@ RSpec.describe Api::V1::PostsController do
   describe 'POST #create' do
     before do
       get :create
-    end 
-  end 
+    end
+  end
 
   it 'successfully creates a post' do
     test_post = build(:post)
       expect(test_post).to be_valid
   end
 end
+
 

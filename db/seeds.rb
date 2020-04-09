@@ -1,4 +1,4 @@
-5.times do 
+15.times do
 	post = Post.create(
 		title: Faker::Coffee.blend_name,
 		body: Faker::Coffee.notes )
