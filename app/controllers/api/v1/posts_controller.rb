@@ -1,4 +1,4 @@
-module Api 
+module Api
   module V1
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
       @post = Post.new(post_params)
 
       if @post.save
-        render json: @post, status: :created, location: @post
+        render json: { status: 'Success', message: 'Post has been saved', data: @post }, status: :ok
       else
         render json: @post.errors, status: :unprocessable_entity
       end
@@ -28,8 +28,9 @@ class PostsController < ApplicationController
 
     # PATCH/PUT /posts/1
     def update
-      if @post.update(post_params)
-        render json: @post
+      @post = Post.find(params[:id])
+      if @post.update_attributes(post_params)
+        render json: {status: 'Success', message: 'Post has been updated', data: @post}, status: :ok
       else
         render json: @post.errors, status: :unprocessable_entity
       end
@@ -38,6 +39,7 @@ class PostsController < ApplicationController
     # DELETE /posts/1
     def destroy
       @post.destroy
+      render json: {status: 'Success', message: 'Post has been deleted', data: @post}, status: :ok
     end
 
     private
