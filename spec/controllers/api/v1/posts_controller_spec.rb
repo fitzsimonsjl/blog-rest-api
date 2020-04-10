@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'factory_bot'
 
-RSpec.describe Api::V1::PostsController do
+RSpec.describe Api::V1::PostsController, type: :controller do
 
   describe 'GET #index' do
     before do
@@ -9,16 +9,16 @@ RSpec.describe Api::V1::PostsController do
     end
   end
 
-    it 'returns http success on #index and retrieves all posts' do
+    it 'returns all posts #index' do
       expect(response).to have_http_status(:success)
     end
 
-    it 'JSON body response contains expected post attributes for posts #index' do
+    it 'the post returned has the correct attributes' do
       have_attributes([:id, :title, :body])
     end
 end
 
-  RSpec.describe Api::V1::PostsController do
+  RSpec.describe Api::V1::PostsController, type: :controller do
 
     describe 'GET #show' do
       before do
@@ -26,22 +26,22 @@ end
       end
     end
 
-    it 'returns http success on posts #show' do
+    it 'returns a specific post' do
       expect(response).to have_http_status(:success)
     end
 
-    it 'JSON body response contains individual post attributes for #show' do
+    it 'the post returned contains the correct attributes' do
       have_attributes([:id, :title, :body])
     end
   end
 
-RSpec.describe Api::V1::PostsController do
+RSpec.describe Api::V1::PostsController, type: :controller do
 
   describe 'POST #create' do
     before do
       get :create
-    end 
-  end 
+    end
+  end
 
   it 'successfully creates a post' do
     test_post = build(:post)

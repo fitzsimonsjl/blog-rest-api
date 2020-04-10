@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'factory_bot'
 
-RSpec.describe Api::V1::CommentsController do
+RSpec.describe Api::V1::CommentsController, type: :controller do
   describe "GET #index" do
     it "returns all comments" do
       get :index
@@ -10,7 +10,7 @@ RSpec.describe Api::V1::CommentsController do
   end
 end
 
-RSpec.describe Api::V1::CommentsController do
+RSpec.describe Api::V1::CommentsController, type: :controller do
 
   describe 'GET #show' do
     before do
@@ -27,13 +27,17 @@ RSpec.describe Api::V1::CommentsController do
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-     it "succesfully creates a comment"
-   end
+RSpec.describe Api::V1::CommentsController, type: :controller do
 
-   context "with invalid params" do
-     it "returns an error that the comment could not be saved"
-   end
+describe 'POST #create' do
+      before do
+        get :create
   end
+end
+
+it 'successfully creates a comment' do
+  test_comment = build(:comment)
+  expect(test_comment).to be_valid
+  end
+end
 
