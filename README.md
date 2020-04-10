@@ -22,3 +22,163 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+----------------------------------------------------------------------------------------------------------------------------
+
+### About 
+
+This is an example of a blog api (the first I've ever written).
+
+All in all, I think it was a great exercise because it gave me a chance to play around with a few things that I've been wanting to look at. Namely:
+
+- How to create an API (up until now I didn't even know there was a separate --api flag in Rails...)
+- Testing with RSpec
+- A good introduction to Docker
+
+**Gems**
+
+The main gems used for this project were:
+
+- pg - for PostgreSQL
+- faker - for initial seed data
+- factory_bot_rails - for testing purposes
+- rspec_rails - for RSpec testing
+- shoulda-matchers - to make our testing syntax/ structure a little cleaner
+
+### Setup 
+
+To run this project yourself ... 
+
+To set up database run rails `db:setup` 
+
+### Running Tests 
+
+Tests are created with RSpec and cover associations and validations, models, and controllers. To run tests, simply `cd` into the blog-rest-api project folder, and then run rake. 
+
+Alternatively, if you'd like to run individual tests rather than everything all at once, you can do the following as an example:
+
+**Running Post model tests**
+
+`rspec ./models/post_spec.rb`
+
+**Running Post controller tests**
+
+`rspec ./spec/controllers/api/v1/posts_controller_spec.rb`
+
+If you get a bundle error, re-run the above commands pre-pended with `bundle exec`. The tests should now run successfully.
+
+### Making Requests 
+
+To make CRUD requests to the Blog API, you can use Postman, Insomnia or similar.  Both Post and Comment entities follow the same format
+
+**GET #index**
+
+For Posts: Choose a `GET` request and enter http://localhost:3000/api/v1/posts as the URL. Send the request. 
+
+For Comments: Choose a `GET` request and enter http://localhost:3000/api/v1/comments as the URL. Send the request.
+
+**GET #show**
+
+For Posts: Choose a `GET` request and enter http://localhost:3000/api/v1/posts/3 as the URL. Send the request. You should receive a list of all posts in the database
+
+For Comments: Choose a `GET` request and enter http://localhost:3000/api/v1/comments/5 as the URL. Send the request. You should receive a list of all comments in the database along with the post that each comment belongs to.
+
+**POST #create**
+
+For Posts: Choose a `POST` request and enter http://localhost:3000/api/v1/posts as the URL. Click on the Headers tab and in Key enter `Content-Type`. For the Value enter `application/json`. Then click on the Body tab and select `raw`. You can then enter your request like so:
+
+```json
+{
+	"title":"A really cool title for a really cool post",
+	"body":"Some really cool stuff to post goes here"
+}
+```
+
+You can then send the request.
+
+For Comments: Choose a POST request and enter http://localhost:3000/api/v1/comments as the URL. Click on the Headers tab and in Key enter `Content-Type`. For the Value enter `application/json`. Then click on the Body tab and select `raw`. You can then enter your request like so:
+
+```json
+{
+	"post_id":"6",
+	"name":"Lars Ulrich",
+	"body":"Really cool post!!!!"
+}
+```
+
+Send the request.
+
+In both cases, you should get a response with the status `Success`, with a message telling you that your post/ comment has been saved.
+
+**PATCH/PUT #update**
+
+For Posts: Choose a `PUT` request and enter http://localhost/api/v1/posts/8 as the URL (We're going to update post number 8 in this example). Click on the Headers tab and in Key enter `Content-Type`. For the Value enter `application/json`. Then click on the Body tab and select `raw`. You can then enter your request with the new post information. Like so:
+
+```json
+{
+	"title":"Updated test post title",
+	"body":"Updated test post body"
+}
+```
+
+You can then send your request.
+
+For Comments: Choose a `PUT` request and enter http://localhost/api/v1/comments/13 as the URL (We're going to update comment number 13). Click on the Headers tab and in Key enter `Content-Type`. For the Value enter `application/json`. Then click on the Body tab and select `raw.` You can then enter your request with the new comment information like so:
+
+```json
+{
+	"post_id":"13",
+	"name":"James Hetfield",
+	"body":"Super awesome post!!"
+}
+```
+
+Send your request. 
+
+Again, you should get a response saying that your comment has been updated successfully
+
+**DELETE #destroy**
+
+For Posts: Choose a `DELETE` request and enter http://localhost/api/v1/posts/18 as the URL. (We'll delete post number 18). Send your request, and the response you get should look something like:
+
+```json
+{
+
+  "status": "Success",
+  "message": "Post has been deleted",
+  "data": {
+	 "id": 18,
+	 "title": "A random title for a random post",
+	 "body": "Random post body content",
+	 "created_at": "2020-04-08T13:15:09.641Z",
+	 "updated_at": "2020-04-08T13:15:09.641Z"
+  }
+
+}
+```
+
+For Comments: Choose a `DELETE` request and enter http://localhost/api/v1/comments/10 as the URL. (We'll delete comment number 9). Send your request, and the response you get should look something like:
+
+```json
+{
+
+  "status": "Success",
+  "message": "Comment has been deleted",
+  "data": {
+	 "id": 10,
+	 "post_id": 10,
+	 "name": "Miss Marlin Gutmann",
+	 "body": "Veniam ipsa doloremque. Voluptatem facere consequatur. Error ut numquam.",
+	 "created_at": "2020-04-08T12:33:08.048Z",
+	 "updated_at": "2020-04-08T12:33:08.048Z"
+   }
+}
+```
+
+### Learning Outcomes & Closing Notes
+
+- Need to look at how to pass data around some more - especially when it comes to taking user input
+- Didn't explore views. Looked at jBuilder gem, and would like to get more into it in the future
+- Still a bit unsure about middleware - need to look into how Rack CORS functions
+
+Like I said before, this has been a really fun exercise, and it's shown me why things such as Docker are incredibly useful - even for my own side projects. Testing is now somewhat demystified as well, meaning I can now start going back and adding tests for the other Rails applications that I've built to hone my skills.
