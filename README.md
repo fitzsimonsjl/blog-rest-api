@@ -23,7 +23,7 @@ The main gems used for this project were:
 
 To run this project yourself, clone the repository into whichever directory you wish, then `cd` into the project folder. Run `bundle`, then `yarn`, and finally run `rails db:setup` to create the database.
 
-Once that's done, you can then run `rails s` to begin serving on `localhost:3000`.
+Once that's done, you can then run `rails s` to begin serving on `localhost:3000`
 
 
 ### Running Tests 
@@ -40,12 +40,14 @@ Alternatively, if you'd like to run individual tests rather than every test toge
 
 `rspec ./spec/controllers/api/v1/posts_controller_spec.rb`
 
-If you get a bundle error, re-run the above commands prepended with `bundle exec`. The tests should now run successfully.
+If you get a bundle error, re-run the above commands prepended with `bundle exec` 
+
+The tests should now run successfully.
 
 
 ### Making Requests 
 
-To make CRUD requests to the Blog API, you can use Postman, Insomnia or similar.  Both Post and Comment entities follow the same format
+To make CRUD requests to the Blog API, you can use Postman, Insomnia or similar.  Both Post and Comment entities follow the same format.
 
 **GET #index**
 
