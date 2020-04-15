@@ -1,30 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-----------------------------------------------------------------------------------------------------------------------------
-
 ### About 
 
 This is an example of a blog api (the first I've ever written) using Ruby version 2.6.5. It allows for the CRUD actions of Posts and Comments, using these entities as endpoints.
