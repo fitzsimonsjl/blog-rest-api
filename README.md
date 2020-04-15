@@ -27,13 +27,13 @@ Things you may want to cover:
 
 ### About 
 
-This is an example of a blog api (the first I've ever written).
+This is an example of a blog api (the first I've ever written) using Ruby version 2.6.5. It allows for the CRUD actions of Posts and Comments, using these entities as endpoints.
 
 All in all, I think it was a great exercise because it gave me a chance to play around with a few things that I've been wanting to look at. Namely:
 
 - How to create an API (up until now I didn't even know there was a separate --api flag in Rails...)
 - Testing with RSpec
-- A good introduction to Docker
+- An excuse to look into Docker more (still a long way to go with this one)
 
 **Gems**
 
@@ -45,17 +45,19 @@ The main gems used for this project were:
 - rspec_rails - for RSpec testing
 - shoulda-matchers - to make our testing syntax/ structure a little cleaner
 
+
 ### Setup 
 
-To run this project yourself ... 
+To run this project yourself, clone the repository into whichever directory you wish, then `cd` into the project folder. Run `bundle`, then `yarn`, and finally run `rails db:setup` to create the database.
 
-To set up database run rails `db:setup` 
+Once that's done, you can then run `rails s` to begin serving on `localhost:3000`.
+
 
 ### Running Tests 
 
 Tests are created with RSpec and cover associations and validations, models, and controllers. To run tests, simply `cd` into the blog-rest-api project folder, and then run rake. 
 
-Alternatively, if you'd like to run individual tests rather than everything all at once, you can do the following as an example:
+Alternatively, if you'd like to run individual tests rather than every test together in one go, you can do the following as an example:
 
 **Running Post model tests**
 
@@ -66,6 +68,7 @@ Alternatively, if you'd like to run individual tests rather than everything all 
 `rspec ./spec/controllers/api/v1/posts_controller_spec.rb`
 
 If you get a bundle error, re-run the above commands pre-pended with `bundle exec`. The tests should now run successfully.
+
 
 ### Making Requests 
 
@@ -177,8 +180,12 @@ For Comments: Choose a `DELETE` request and enter http://localhost/api/v1/commen
 
 ### Learning Outcomes & Closing Notes
 
-- Need to look at how to pass data around some more - especially when it comes to taking user input
-- Didn't explore views. Looked at jBuilder gem, and would like to get more into it in the future
-- Still a bit unsure about middleware - need to look into how Rack CORS functions
+This project has taught me how to get started with building a simple API, which is something I definitely want to continue looking into. It's now made me think about turning a couple of other projects into APIs, to leverage at a later date. 
 
-Like I said before, this has been a really fun exercise, and it's shown me why things such as Docker are incredibly useful - even for my own side projects. Testing is now somewhat demystified as well, meaning I can now start going back and adding tests for the other Rails applications that I've built to hone my skills.
+It also introduced me to RSpec testing, which was far further down my list until this assignment. I now feel that I can confidently write basic tests for different aspects of an application e.g. model validations and associations, controller actions etc. Adding test to some of my other applications to continue practicing with RSpec is what I plan on doing next.
+
+For the future, I need to look at how to pass data from user input to the API and then return a response. I spent some time looking at this, and I'm not sure whether it was just the fact I was overthinking the API aspect (which I still find midly scary), but it stumped me either way. 
+
+Middleware is also still quite a mystery to me. I did do some reading around it, but it seems like there's a lot of ground to cover. Rack CORS and understanding how it works seems to be a good starting point, I feel. 
+
+Finally, getting started with Docker has opened my eyes to its usefulness and I can definitely see the value. Although I still find it incredibly confusing, it's something I'd love to get stuck into properly when I have a bit more experience and could make more sense of it.
