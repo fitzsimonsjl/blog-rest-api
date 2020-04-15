@@ -1,3 +1,5 @@
+# RESTful Blog API Example
+
 ### About 
 
 This is an example of a blog api (the first I've ever written) using Ruby version 2.6.5. It allows for the CRUD actions of Posts and Comments, using these entities as endpoints.
