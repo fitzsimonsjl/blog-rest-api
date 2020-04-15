@@ -40,7 +40,7 @@ Alternatively, if you'd like to run individual tests rather than every test toge
 
 `rspec ./spec/controllers/api/v1/posts_controller_spec.rb`
 
-If you get a bundle error, re-run the above commands pre-pended with `bundle exec`. The tests should now run successfully.
+If you get a bundle error, re-run the above commands prepended with `bundle exec`. The tests should now run successfully.
 
 
 ### Making Requests 
